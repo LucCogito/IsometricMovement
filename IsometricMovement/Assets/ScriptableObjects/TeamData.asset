@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TeamData
   m_EditorClassIdentifier: 
   <UnitsCount>k__BackingField: 3
+  <SpeedRange>k__BackingField: {x: 3, y: 5}

@@ -26,8 +26,5 @@ public class UnitsPanel : MonoBehaviour
         }
     }
 
-    private void ChooseUnit(Unit unit)
-    {
-        
-    }
+    private void ChooseUnit(Unit unit) => InputManager.Instance.ChooseUnit(unit);
 }
