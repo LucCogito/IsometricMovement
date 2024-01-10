@@ -5,7 +5,5 @@ using UnityEngine.EventSystems;
 
 public class MoveInputCanvasReader : MonoBehaviour, IPointerClickHandler
 {
-    public void OnPointerClick(PointerEventData eventData)
-    {
-    }
+    public void OnPointerClick(PointerEventData eventData) => InputManager.Instance.MoveUnits(eventData.position);
 }
