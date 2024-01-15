@@ -37,7 +37,7 @@ public class TeamController : MonoBehaviour
         for (int i = 0; i < _teamData.UnitsCount; i++)
         {
             var unit = Instantiate(_unitPrefab, new Vector3(i, 1, 3-i), Quaternion.identity, transform);
-            unit.Initialize(Random.Range(_teamData.SpeedRange.x, _teamData.SpeedRange.y));
+            unit.Initialize(_teamData);
             _units.Add(unit);
         }
         _selectedUnit = _units[0];
@@ -63,9 +63,14 @@ public class TeamController : MonoBehaviour
     private void MoveToPosition(Vector2 position)
     {
         _currentMovementTarget = position;
-        _selectedUnit.SetPath(position);
+        PathfindingManager.Instance.RequestPath(_selectedUnit.transform.position, new Vector3(position.x, 0, position.y), SetPaths);
+    }
+
+    private void SetPaths(Vector3[] path)
+    {
+        _selectedUnit.SetPath(path);
         foreach (var unit in _units)
             if (unit != _selectedUnit)
-                unit.Follow(_selectedUnit);
+                unit.SetFollowTarget(_selectedUnit);
     }
 }
