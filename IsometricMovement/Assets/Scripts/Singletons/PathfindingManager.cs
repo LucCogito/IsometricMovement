@@ -24,7 +24,7 @@ public class PathfindingManager : Singleton<PathfindingManager>
 		bool pathSuccess = false;
 		PathfindingNode startNode = _grid.NodeFromWorldPoint(startPos);
 		PathfindingNode targetNode = _grid.NodeFromWorldPoint(targetPos);
-		if (startNode.Walkable && targetNode.Walkable)
+		if (targetNode.Walkable)
 		{
 			Heap<PathfindingNode> openSet = new Heap<PathfindingNode>(_grid.MaxSize);
 			HashSet<PathfindingNode> closedSet = new HashSet<PathfindingNode>();

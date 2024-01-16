@@ -85,7 +85,7 @@ public class Unit : MonoBehaviour
                 currentWaypoint = _path[_targetIndex];
             }
             var waypointPos = new Vector3(currentWaypoint.x, transform.position.y, currentWaypoint.z);
-            var targetPos = Vector3.MoveTowards(transform.position, waypointPos, _speed * Time.deltaTime);
+            var targetPos = Vector3.MoveTowards(transform.position, waypointPos, _speed * Time.fixedDeltaTime);
             _rigidbody.MovePosition(targetPos);
             yield return null;
         }
